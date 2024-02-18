@@ -13,7 +13,6 @@ import javax.persistence.*;
 @Table(schema = "bot", name = "app_document")
 @Entity
 public class AppDocument {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

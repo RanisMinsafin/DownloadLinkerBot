@@ -65,5 +65,12 @@
             <artifactId>common-jpa</artifactId>
             <version>1.0-EDEN</version>
         </dependency>
+
+        <dependency>
+            <groupId>ru.minsafin</groupId>
+            <artifactId>common-utils</artifactId>
+            <version>1.0-EDEN</version>
+        </dependency>
+
     </dependencies>
 </project>

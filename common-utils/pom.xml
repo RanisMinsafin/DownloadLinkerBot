@@ -9,4 +9,18 @@
     <artifactId>common-utils</artifactId>
     <name>Archetype - common-utils</name>
     <url>http://maven.apache.org</url>
+
+    <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <hashids.version>1.0.1</hashids.version>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.hashids</groupId>
+            <artifactId>hashids</artifactId>
+            <version>${hashids.version}</version>
+        </dependency>
+    </dependencies>
 </project>

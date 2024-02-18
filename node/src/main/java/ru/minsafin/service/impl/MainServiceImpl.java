@@ -9,8 +9,10 @@ import org.telegram.telegrambots.meta.api.objects.User;
 import ru.minsafin.dao.AppUserDAO;
 import ru.minsafin.dao.RawDataDAO;
 import ru.minsafin.entity.AppDocument;
+import ru.minsafin.entity.AppPhoto;
 import ru.minsafin.entity.AppUser;
 import ru.minsafin.entity.RawData;
+import ru.minsafin.enums.LinkType;
 import ru.minsafin.enums.ServiceCommand;
 import ru.minsafin.exceptions.UploadFileException;
 import ru.minsafin.service.FileService;
@@ -70,12 +72,12 @@ public class MainServiceImpl implements MainService {
             return;
         }
 
-        try{
+        try {
             AppDocument doc = fileService.processDoc(update.getMessage());
-            // TODO генерация ссылки
-            var answer = "Документ успешно загружен! Ссылка для скачивания: ____";
+            String link = fileService.generateLink(doc.getId(), LinkType.GET_DOC);
+            var answer = "Документ успешно загружен! Ссылка для скачивания: " + link;
             sendAnswer(answer, chatId);
-        } catch (UploadFileException e){
+        } catch (UploadFileException e) {
             log.error(e);
             String error = "К сожалению, загрузка файла не удалась. Повторите попытку позже.";
             sendAnswer(error, chatId);
@@ -91,9 +93,17 @@ public class MainServiceImpl implements MainService {
         if (isNotAllowToSendContent(chatId, appUser)) {
             return;
         }
-        // TODO добавить сохранение документа
-        var answer = "Фото успешно загружено! Ссылка для скачивания: ____";
-        sendAnswer(answer, chatId);
+        try {
+            AppPhoto photo = fileService.processPhoto(update.getMessage());
+            String link = fileService.generateLink(photo.getId(), LinkType.GET_PHOTO);
+            var answer = "Фото успешно загружено! Ссылка для скачивания: " + link;
+            sendAnswer(answer, chatId);
+        } catch (UploadFileException e) {
+            log.error(e);
+            String error = "К сожалению, загрузка фото не удалась. Повторите попытку позже.";
+            sendAnswer(error, chatId);
+        }
+
     }
 
     private boolean isNotAllowToSendContent(Long chatId, AppUser appUser) {
