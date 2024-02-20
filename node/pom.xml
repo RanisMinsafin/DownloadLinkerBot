@@ -18,6 +18,8 @@
         <common-jpa.version>1.0-SNAPSHOT</common-jpa.version>
         <hibernate-types.version>2.2.2</hibernate-types.version>
         <postgresql.version>42.2.18</postgresql.version>
+        <javax.version>1.4</javax.version>
+        <module.version>1.0-EDEN</module.version>
     </properties>
 
     <dependencies>
@@ -40,7 +42,7 @@
         <dependency>
             <groupId>ru.minsafin</groupId>
             <artifactId>common-rabbitmq</artifactId>
-            <version>1.0-EDEN</version>
+            <version>${module.version}</version>
         </dependency>
 
         <dependency>
@@ -63,14 +65,19 @@
         <dependency>
             <groupId>ru.minsafin</groupId>
             <artifactId>common-jpa</artifactId>
-            <version>1.0-EDEN</version>
+            <version>${module.version}</version>
         </dependency>
 
         <dependency>
             <groupId>ru.minsafin</groupId>
             <artifactId>common-utils</artifactId>
-            <version>1.0-EDEN</version>
+            <version>${module.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>${javax.version}</version>
+        </dependency>
     </dependencies>
 </project>
