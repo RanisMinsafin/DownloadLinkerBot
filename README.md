@@ -1,6 +1,13 @@
-# File Exchange System
+# Download Linker Bot
 
-This file exchange system with asynchronous message processing is developed as a part of the "Telegram Bot in Java" course by Russian IT company [Relex](https://relex.ru).
+Telegram Bot designed for effortless file and photo sharing with a microservices architecture, is developed as part of the "Telegram Bot in Java" course by the Russian IT company [Relex](https://relex.ru).
+
+## Technologies:
+
+*   Spring Boot
+*   Spring Data JPA
+*   PostgreSQL
+*   RESTful API
 
 ## Application Workflow:
 
@@ -16,4 +23,4 @@ The user launches the bot and sends a message. The Telegram server then receives
 
 The message broker ensures asynchronous processing and distribution of messages among bot subscribers using the node microservice. Nodes are necessary for the parallel processing of bot subscriber requests.
 
-![Architecture](architecture.png)
+![System Architecture](architecture.png)
